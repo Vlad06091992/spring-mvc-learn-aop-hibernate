@@ -21,7 +21,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
     @Transactional
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
-
+        System.out.println("REPOSITORY");
         List<Employee> employees = session.createQuery("from Employee", Employee.class).getResultList();
         return employees;
 
