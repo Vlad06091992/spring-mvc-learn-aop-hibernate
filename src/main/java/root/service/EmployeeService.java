@@ -20,4 +20,11 @@ public class EmployeeService implements EmployeeServiceInterface {
         System.out.println("SERVICE");
         return this.employeeDao.getAllEmployees();
     }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        this.employeeDao.saveEmployee(employee);
+    }
+
+
 }

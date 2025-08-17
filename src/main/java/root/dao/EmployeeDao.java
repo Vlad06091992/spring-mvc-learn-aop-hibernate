@@ -26,4 +26,11 @@ public class EmployeeDao implements EmployeeDaoInterface {
         return employees;
 
     }
+
+    @Override
+    @Transactional
+    public void saveEmployee(Employee employee) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(employee);
+    }
 }

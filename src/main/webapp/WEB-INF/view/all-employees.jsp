@@ -39,5 +39,7 @@
       <p>Сотрудников не найдено.</p>
     </c:otherwise>
   </c:choose>
+  <br/>
+  <input type="button" onclick="window.location.href = '/addEmployee'" value="add"/>
 </body>
 </html>
