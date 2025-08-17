@@ -41,8 +41,12 @@ public class RootController {
     @RequestMapping("/updateEmployee")
     public String updateEmployee(@RequestParam("empId") String id, Model model) {
         Employee employee = this.service.getEmployeeById(id);
-        
         model.addAttribute("employee", employee);
         return "employee-info";
 }
+    @RequestMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("empId") String id) {
+       this.service.deleteEmployeeById(id);
+        return "redirect:/";
+    }
 }

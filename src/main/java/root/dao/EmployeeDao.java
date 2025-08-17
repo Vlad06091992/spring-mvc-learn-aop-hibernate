@@ -3,6 +3,7 @@ package root.dao;
 import jakarta.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -41,5 +42,16 @@ public class EmployeeDao implements EmployeeDaoInterface {
     public Employee getEmployeeById(String id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Employee.class,id);
+    }
+
+    @Override
+    public void deleteEmployeeById(String id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("DELETE FROM Employee" +
+                " where id =:employeeId")
+                .setParameter("employeeId",id);
+
+        query.executeUpdate();
+
     }
 }

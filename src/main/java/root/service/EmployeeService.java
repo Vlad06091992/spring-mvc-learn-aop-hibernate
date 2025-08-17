@@ -36,5 +36,11 @@ public class EmployeeService implements EmployeeServiceInterface {
         return this.employeeDao.getEmployeeById(id);
     }
 
+    @Override
+    @Transactional
+    public void deleteEmployeeById(String id) {
+         this.employeeDao.deleteEmployeeById(id);
+    }
+
 
 }

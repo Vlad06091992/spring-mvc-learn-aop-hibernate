@@ -8,7 +8,6 @@
 </head>
 <body>
   <h2>Список сотрудников</h2>
-  <a href="/employee/askDetails">ссылка</a>
 
   <c:choose>
     <c:when test="${not empty employees}">
@@ -28,6 +27,9 @@
         <c:url var="updateButton" value="/updateEmployee">
             <c:param name="empId" value="${emp.id}" />
         </c:url>
+             <c:url var="deleteButton" value="/deleteEmployee">
+                    <c:param name="empId" value="${emp.id}" />
+                </c:url>
              <tr>
               <td>${emp.id}</td>
               <td>${emp.name}</td>
@@ -35,8 +37,9 @@
               <td>${emp.salary}</td>
               <td>${emp.department}</td>
               <td>
-              <input type="button" onclick="window.location.href = '${updateButton}'" value="update employee"/>
-              </td>
+              <input type="button" onclick="window.location.href = '${updateButton}'" value="update"/>
+
+                 <input type="button" onclick="window.location.href = '${deleteButton}'" value="delete"/>                            </td>
             </tr>
           </c:forEach>
         </tbody>
