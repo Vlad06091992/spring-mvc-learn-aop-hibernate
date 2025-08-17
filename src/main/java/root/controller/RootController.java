@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import root.entity.Employee;
 import root.service.EmployeeServiceInterface;
 
@@ -28,7 +29,7 @@ public class RootController {
     public String addEmployee(Model model) {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
-        return "add-employee";
+        return "employee-info";
     }
 
     @RequestMapping("/saveEmployee")
@@ -36,4 +37,12 @@ public class RootController {
         this.service.saveEmployee(employee);
         return "redirect:/";
     }
+
+    @RequestMapping("/updateEmployee")
+    public String updateEmployee(@RequestParam("empId") String id, Model model) {
+        Employee employee = this.service.getEmployeeById(id);
+        
+        model.addAttribute("employee", employee);
+        return "employee-info";
+}
 }

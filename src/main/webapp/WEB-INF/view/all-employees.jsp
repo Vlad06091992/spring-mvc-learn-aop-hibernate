@@ -20,16 +20,23 @@
             <th>Фамилия</th>
             <th>Зарплата</th>
             <th>Отдел</th>
+            <th>Operations</th>
           </tr>
         </thead>
         <tbody>
           <c:forEach var="emp" items="${employees}">
-            <tr>
+        <c:url var="updateButton" value="/updateEmployee">
+            <c:param name="empId" value="${emp.id}" />
+        </c:url>
+             <tr>
               <td>${emp.id}</td>
               <td>${emp.name}</td>
               <td>${emp.surname}</td>
               <td>${emp.salary}</td>
               <td>${emp.department}</td>
+              <td>
+              <input type="button" onclick="window.location.href = '${updateButton}'" value="update employee"/>
+              </td>
             </tr>
           </c:forEach>
         </tbody>

@@ -1,5 +1,6 @@
 package root.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,23 @@ public class EmployeeService implements EmployeeServiceInterface {
     private EmployeeDaoInterface employeeDao;
 
     @Override
+    @Transactional
     public List<Employee> getAllEmployees() {
         System.out.println("SERVICE");
         return this.employeeDao.getAllEmployees();
     }
 
     @Override
+    @Transactional
     public void saveEmployee(Employee employee) {
+        
         this.employeeDao.saveEmployee(employee);
+    }
+
+    @Override
+    @Transactional
+    public Employee getEmployeeById(String id) {
+        return this.employeeDao.getEmployeeById(id);
     }
 
 

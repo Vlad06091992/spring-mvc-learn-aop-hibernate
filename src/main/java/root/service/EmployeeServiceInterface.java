@@ -7,4 +7,5 @@ import java.util.List;
 public interface EmployeeServiceInterface {
     public List<Employee> getAllEmployees();
     public void saveEmployee(Employee employee);
+    public Employee getEmployeeById(String id);
 }

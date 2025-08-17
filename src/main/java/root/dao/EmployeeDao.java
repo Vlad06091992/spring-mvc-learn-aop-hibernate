@@ -18,7 +18,6 @@ public class EmployeeDao implements EmployeeDaoInterface {
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         System.out.println("REPOSITORY");
@@ -28,9 +27,19 @@ public class EmployeeDao implements EmployeeDaoInterface {
     }
 
     @Override
-    @Transactional
     public void saveEmployee(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(employee);
+        if (!employee.getId().equals("")){
+            session.update(employee);
+        } else {
+            session.save(employee);
+        }
+
+    }
+
+    @Override
+    public Employee getEmployeeById(String id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Employee.class,id);
     }
 }
